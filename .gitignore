@@ -1,0 +1,75 @@
+# ============================================
+# QuantDinger - Open Source Repository
+# Frontend is closed-source, only dist/ is tracked.
+# ============================================
+
+# ========================
+# Frontend Source (CLOSED SOURCE - NOT tracked)
+# ========================
+/quantdinger_vue/
+
+# ========================
+# Frontend dist - DO track (pre-built)
+# ========================
+!/frontend/
+!/frontend/dist/
+!/frontend/dist/**
+
+# ========================
+# Environment & Secrets
+# ========================
+.env
+.env.local
+.env.*.local
+backend_api_python/.env
+
+# ========================
+# IDE & OS
+# ========================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.iml
+
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+# Only ignore root-level dist/, not frontend/dist/
+/dist/
+build/
+*.egg
+.eggs/
+venv/
+.venv/
+env/
+
+# ========================
+# Node (if any remain)
+# ========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ========================
+# Logs & Runtime Data
+# ========================
+*.log
+backend_api_python/logs/
+backend_api_python/data/quantdinger.db
+backend_api_python/data/memory/
+
+# ========================
+# Docker
+# ========================
+docker-compose.override.yml

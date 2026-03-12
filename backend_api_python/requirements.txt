@@ -1,0 +1,30 @@
+Flask==2.3.3
+flask-cors==4.0.0
+finnhub-python>=2.4.18
+yfinance>=0.2.18
+ccxt>=4.0.0
+pandas>=1.5.0
+requests>=2.28.0
+PySocks>=1.7.1
+akshare>=1.12.0
+pymysql>=1.0.2
+SQLAlchemy>=2.0.0
+PyJWT==2.8.0
+python-dotenv>=1.0.1
+# HD wallet derivation (xpub -> address) for USDT payments
+bip-utils>=2.9.0
+# PostgreSQL support (multi-user mode)
+psycopg2-binary>=2.9.9
+# Password hashing
+bcrypt>=4.1.0
+# Interactive Brokers trading (optional, for US stock trading via TWS/IB Gateway)
+ib_insync>=0.9.86
+# MetaTrader 5 trading (optional, for forex trading via MT5 terminal, Windows only)
+# Note: MetaTrader5 is Windows-only and not available on Linux/macOS
+# Install separately on Windows: pip install MetaTrader5>=5.0.45
+# MetaTrader5>=5.0.45
+# Enhanced search services (optional, for better news search)
+# Tavily - AI-optimized search API (free 1000 requests/month)
+# tavily-python>=0.3.0
+# SerpAPI - Google/Bing search scraper (free 100 requests/month)
+# google-search-results>=2.4.0

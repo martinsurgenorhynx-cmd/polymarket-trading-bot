@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Database (在 docker-compose 中挂载)
+*.db
+
+# Environment
+.env
+.env.local
+
+# Data (在 docker-compose 中挂载)
+data/memory/*.db
+
+# Git
+.git/
+.gitignore
+
+# Tests
+tests/
+pytest_cache/
+.coverage
+
+# Documentation
+*.md
+!README.md
+

@@ -1,0 +1,63 @@
+# ======================================================
+# [TEMPLATE] Place this in your PRIVATE frontend repo:
+#   .github/workflows/build-and-deploy.yml
+#
+# This builds the Vue.js frontend and triggers the
+# open-source repo to update its frontend/dist/.
+# ======================================================
+
+name: Build & Deploy Frontend
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout frontend source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build production
+        run: npm run build
+
+      - name: Package dist
+        run: |
+          cd dist
+          tar -czf /tmp/dist.tar.gz .
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: build-${{ github.run_number }}
+          files: /tmp/dist.tar.gz
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger open-source repo update
+        # Replace OWNER/QuantDinger with your open-source repo
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.OPENSOURCE_REPO_TOKEN }}" \
+            https://api.github.com/repos/OWNER/QuantDinger/dispatches \
+            -d '{
+              "event_type": "frontend-updated",
+              "client_payload": {
+                "version": "'${{ github.run_number }}'",
+                "sha": "'${{ github.sha }}'"
+              }
+            }'

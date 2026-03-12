@@ -1,0 +1,6 @@
+# Windows-specific optional dependencies
+# Install these on Windows systems that need MT5 trading support:
+# pip install -r requirements-windows.txt
+
+# MetaTrader 5 trading (Windows only, for forex trading via MT5 terminal)
+MetaTrader5>=5.0.45
